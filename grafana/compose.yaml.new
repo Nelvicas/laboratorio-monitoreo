@@ -1,0 +1,23 @@
+services:
+  grafana:
+    image: grafana/grafana:latest
+    container_name: lab-grafana
+    restart: "no"
+
+    ports:
+      - "127.0.0.1:3000:3000"
+
+    volumes:
+      - grafana_data:/var/lib/grafana
+
+    mem_limit: 512m
+
+    networks:
+      - monitoring-net
+
+volumes:
+  grafana_data:
+
+networks:
+  monitoring-net:
+    external: true
